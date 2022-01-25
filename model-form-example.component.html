@@ -1,0 +1,47 @@
+<form [formGroup]="myForm">
+    <div class="form-group">
+      <label>Nombre</label>
+      <input type="text" class="form-control" formControlName="nombre"
+      [ngClass]="{'is-invalid': !myForm.get('nombre').valid}">
+      <div *ngIf="!myForm.get('nombre').valid" class="invalid-feedback">
+        El nombre es necesario
+      </div>   
+    </div>
+  
+    <div class="form-group">
+      <label>Email</label>
+      <input  type="email" class="form-control" formControlName="email"
+      [ngClass]="{'is-invalid': !myForm.get('email').valid}">
+      <div *ngIf="!myForm.get('email').valid" class="invalid-feedback">
+        Debe Introducir email correcto.      
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label>Password</label>
+      <input  type="password" class="form-control" formControlName="password"
+      [ngClass]="{'is-invalid': !myForm.get('password').valid}">
+      <div *ngIf="!myForm.get('password').valid" class="invalid-feedback">
+        Debe introducir una clave min 8 caracteres.      
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label>Hobbies</label>
+      <select formControlName="hobbies" class="form-control" >
+        <option *ngFor="let hobby of hobbies" [value]="hobby">
+          {{hobby}}
+        </option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+    <button class="btn btn-danger btn-block" (click)="register()" [disabled]="myForm.invalid">Submit</button>
+    </div>
+  </form>
+
+
+
+
+
+  
